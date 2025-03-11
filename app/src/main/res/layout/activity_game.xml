@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameActivity">
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:columnCount="4"
+        android:rowCount="4">
+
+        <ImageButton
+            android:id="@+id/imgBtn1"
+            android:layout_width="90dp"
+            android:layout_height="90dp" />
+
+        <ImageButton
+            android:id="@+id/imgBtn2"
+            android:layout_width="90dp"
+            android:layout_height="90dp" />
+
+        <ImageButton
+            android:id="@+id/imgBtn3"
+            android:layout_width="90dp"
+            android:layout_height="90dp" />
+
+        <ImageButton
+            android:id="@+id/imgBtn4"
+            android:layout_width="90dp"
+            android:layout_height="90dp" />
+
+        <ImageButton
+            android:id="@+id/imgBtn5"
+            android:layout_width="90dp"
+            android:layout_height="90dp" />
+
+        <ImageButton
+            android:id="@+id/imgBtn6"
+            android:layout_width="90dp"
+            android:layout_height="90dp" />
+
+        <ImageButton
+            android:id="@+id/imgBtn7"
+            android:layout_width="90dp"
+            android:layout_height="90dp" />
+
+        <ImageButton
+            android:id="@+id/imgBtn8"
+            android:layout_width="90dp"
+            android:layout_height="90dp" />
+
+        <ImageButton
+            android:id="@+id/imgBtn9"
+            android:layout_width="90dp"
+            android:layout_height="90dp" />
+
+        <ImageButton
+            android:id="@+id/imgBtn10"
+            android:layout_width="90dp"
+            android:layout_height="90dp" />
+
+        <ImageButton
+            android:id="@+id/imgBtn11"
+            android:layout_width="90dp"
+            android:layout_height="90dp" />
+
+        <ImageButton
+            android:id="@+id/imgBtn12"
+            android:layout_width="90dp"
+            android:layout_height="90dp" />
+
+        <ImageButton
+            android:id="@+id/imgBtn13"
+            android:layout_width="90dp"
+            android:layout_height="90dp" />
+
+        <ImageButton
+            android:id="@+id/imgBtn14"
+            android:layout_width="90dp"
+            android:layout_height="90dp" />
+
+        <ImageButton
+            android:id="@+id/imgBtn15"
+            android:layout_width="90dp"
+            android:layout_height="90dp" />
+
+        <ImageButton
+            android:id="@+id/imgBtn16"
+            android:layout_width="90dp"
+            android:layout_height="90dp" />
+
+
+    </GridLayout>
+</RelativeLayout>
