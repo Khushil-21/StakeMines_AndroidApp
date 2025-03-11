@@ -1,5 +1,6 @@
 package com.royal.stakemines;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageButton;
@@ -21,6 +22,7 @@ public class GameActivity extends AppCompatActivity {
     String buttonValues[] = new String[16];
     boolean isGameFinished = false;
     int buttonClicked = 0;
+    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +73,8 @@ public class GameActivity extends AppCompatActivity {
         if (buttonValues[index].equals("bomb")) {
             imageButton[index].setBackground(getDrawable(R.drawable.bomb));
             Toast.makeText(this, "You Lost", Toast.LENGTH_SHORT).show();
+            mediaPlayer = MediaPlayer.create(this, R.raw.game_over);
+            mediaPlayer.start();
             isGameFinished = true;
         } else {
             imageButton[index].setBackground(getDrawable(R.drawable.diamond));
