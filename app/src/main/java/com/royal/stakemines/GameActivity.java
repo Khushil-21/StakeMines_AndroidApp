@@ -1,17 +1,28 @@
 package com.royal.stakemines;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Arrays;
+import java.util.Random;
+
 public class GameActivity extends AppCompatActivity {
+
+    ImageButton imageButton[] = new ImageButton[16];
+    String buttonValues[] = new String[16];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // force dark mode
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_game);
@@ -20,5 +31,55 @@ public class GameActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        imageButton[0] = findViewById(R.id.imgBtn1);
+        imageButton[1] = findViewById(R.id.imgBtn2);
+        imageButton[2] = findViewById(R.id.imgBtn3);
+        imageButton[3] = findViewById(R.id.imgBtn4);
+        imageButton[4] = findViewById(R.id.imgBtn5);
+        imageButton[5] = findViewById(R.id.imgBtn6);
+        imageButton[6] = findViewById(R.id.imgBtn7);
+        imageButton[7] = findViewById(R.id.imgBtn8);
+        imageButton[8] = findViewById(R.id.imgBtn9);
+        imageButton[9] = findViewById(R.id.imgBtn10);
+        imageButton[10] = findViewById(R.id.imgBtn11);
+        imageButton[11] = findViewById(R.id.imgBtn12);
+        imageButton[12] = findViewById(R.id.imgBtn13);
+        imageButton[13] = findViewById(R.id.imgBtn14);
+        imageButton[14] = findViewById(R.id.imgBtn15);
+        imageButton[15] = findViewById(R.id.imgBtn16);
+
+        // Initialize buttonValues array with empty strings
+        for (int i = 0; i < buttonValues.length; i++) {
+            buttonValues[i] = "diamond";
+        }
+        for (int i = 0; i < 4; i++) {
+            assignBomb();
+        }
+        Log.i("Values", Arrays.toString(buttonValues));
+
+        for (int i = 0; i < 16; i++) {
+            final int index = i;
+            imageButton[i].setOnClickListener(view -> playGame(index));
+
+        }
     }
+
+    void playGame(int index) {
+        if (buttonValues[index].equals("bomb")) {
+            imageButton[index].setBackground(getDrawable(R.drawable.bomb));
+        } else {
+            imageButton[index].setBackground(getDrawable(R.drawable.diamond));
+        }
+    }
+
+    void assignBomb() {
+        int temp = new Random().nextInt(16);
+        if (buttonValues[temp].equals("diamond")) {
+            buttonValues[temp] = "bomb";
+        } else {
+            assignBomb();
+        }
+    }
+
 }
