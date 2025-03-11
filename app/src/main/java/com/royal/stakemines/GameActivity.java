@@ -3,6 +3,7 @@ package com.royal.stakemines;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -18,6 +19,8 @@ public class GameActivity extends AppCompatActivity {
 
     ImageButton imageButton[] = new ImageButton[16];
     String buttonValues[] = new String[16];
+    boolean isGameFinished = false;
+    int buttonClicked = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,32 +52,39 @@ public class GameActivity extends AppCompatActivity {
         imageButton[14] = findViewById(R.id.imgBtn15);
         imageButton[15] = findViewById(R.id.imgBtn16);
 
-        // Initialize buttonValues array with empty strings
-        for (int i = 0; i < buttonValues.length; i++) {
-            buttonValues[i] = "diamond";
-        }
-        for (int i = 0; i < 4; i++) {
-            assignBomb();
-        }
-        Log.i("Values", Arrays.toString(buttonValues));
-
         for (int i = 0; i < 16; i++) {
+            buttonValues[i] = "diamond";
             final int index = i;
             imageButton[i].setOnClickListener(view -> playGame(index));
 
         }
+
+        for (int i = 0; i < 4; i++) {
+            assignBomb();
+        }
+        Log.i("Values", Arrays.toString(buttonValues));
     }
 
     void playGame(int index) {
+        if (isGameFinished) return;
+
         if (buttonValues[index].equals("bomb")) {
             imageButton[index].setBackground(getDrawable(R.drawable.bomb));
+            Toast.makeText(this, "You Lost", Toast.LENGTH_SHORT).show();
+            isGameFinished = true;
         } else {
             imageButton[index].setBackground(getDrawable(R.drawable.diamond));
+        }
+        buttonClicked++;
+        if (buttonClicked == 12) {
+            Toast.makeText(this, "You Won", Toast.LENGTH_SHORT).show();
+            isGameFinished = true;
         }
     }
 
     void assignBomb() {
         int temp = new Random().nextInt(16);
+
         if (buttonValues[temp].equals("diamond")) {
             buttonValues[temp] = "bomb";
         } else {
